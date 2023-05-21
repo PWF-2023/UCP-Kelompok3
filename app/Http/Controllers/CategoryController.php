@@ -6,15 +6,15 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function Index()
+    public function index()
     {
         return view('category.index');
     }
-    public function Create()
+    public function create()
     {
         return view('category.create');
     }
-    public function Edit()
+    public function edit()
     {
         return view('category.edit');
     }
