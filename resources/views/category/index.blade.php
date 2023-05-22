@@ -52,9 +52,11 @@
 
                                         <p>{{ $category->title }}</p>
                                     </td>
-                                    <td>
-                                        {{-- menghitung jumlah todo --}}
+
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <p>{{ $category->todos->count() }}</p>
                                     </td>
+
                                     <td class="px-6 py-4">
                                         <div class="flex space-x-3">
                                             {{-- Action here --}}
