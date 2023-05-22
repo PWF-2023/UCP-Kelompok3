@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -10,12 +11,20 @@ class CategoryController extends Controller
     {
         return view('category.index');
     }
+
     public function create()
     {
         return view('category.create');
     }
-    public function edit()
+
+    public function detroy(Category $category)
     {
-        return view('category.edit');
+        if(auth()->user()->id == $category->user_id){
+            $category->delete();
+            return redirect()->route('category.index')->with('success', 'Category deleted successfully');
+        }else{
+            return redirect()->route('category.index')->with('danger', 'You are not authorized to delete this category');
+        }
+        //return view('category.delete');
     }
 }
