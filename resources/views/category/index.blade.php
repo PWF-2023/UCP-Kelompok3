@@ -47,6 +47,14 @@
                         <tbody>
                             @forelse ($categories as $category)
                                 <tr class="odd:bg-white odd:dark:bg-gray-800 even:bg-gray-50 even:dark:bg-gray-700">
+
+                                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+
+                                        <p>{{ $category->title }}</p>
+                                    </td>
+                                    <td>
+                                        {{-- menghitung jumlah todo --}}
+                                    </td>
                                     <td class="px-6 py-4">
                                         <div class="flex space-x-3">
                                             {{-- Action here --}}
