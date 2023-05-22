@@ -12,17 +12,26 @@ class CategoryController extends Controller
         return view('category.index');
     }
 
+    public function store(Request $request, Category $category)
+    {
+        $request->validate([
+            'title' => 'required|max:255',
+        ]);
+        $request->user()->categories()->create($request->all());
+        return redirect()->route('category.index')->with('success', 'Category create successfully');
+    }
+
     public function create()
     {
         return view('category.create');
     }
 
-    public function detroy(Category $category)
+    public function destroy(Category $category)
     {
-        if(auth()->user()->id == $category->user_id){
+        if (auth()->user()->id == $category->user_id) {
             $category->delete();
             return redirect()->route('category.index')->with('success', 'Category deleted successfully');
-        }else{
+        } else {
             return redirect()->route('category.index')->with('danger', 'You are not authorized to delete this category');
         }
         //return view('category.delete');

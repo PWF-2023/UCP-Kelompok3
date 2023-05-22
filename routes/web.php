@@ -44,21 +44,29 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit', [CategoryController::class, 'edit'])->name('category.edit');
     });
 
+    // Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+    // Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
+    // Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
+    // Route::get('/category/{todo}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+    // Route::patch('/category/{todo}', [CategoryController::class, 'update'])->name('category.update');
+    // Route::delete('/category/{todo}', [CategoryController::class, 'destroy'])->name('category.destroy');
+    
+    Route::resource('category', CategoryController::class)->except(['show']);
+
 
     // Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
     // Route::post('/todo', [TodoController::class, 'store'])->name('todo.store');
+    // Route::get('/todo/create', [TodoController::class, 'create'])->name('todo.create');
+    // Route::get('/todo/{todo}/edit', [TodoController::class, 'edit'])->name('todo.edit');
+    // Route::patch('/todo/{todo}', [TodoController::class, 'update'])->name('todo.update');
+    // Route::delete('/todo/{todo}', [TodoController::class, 'destroy'])->name('todo.destroy');
 
     Route::resource('todo', TodoController::class)->except(['show']);
+    
 
-    //Route::get('/todo/create', [TodoController::class, 'create'])->name('todo.create');
-
+    
     Route::patch('/todo/{todo}/complete', [TodoController::class, 'complete'])->name('todo.complete');
     Route::patch('/todo/{todo}/incomplete', [TodoController::class, 'uncomplete'])->name('todo.uncomplete');
-
-    //Route::get('/todo/{todo}/edit', [TodoController::class, 'edit'])->name('todo.edit');
-    // Route::patch('/todo/{todo}', [TodoController::class, 'update'])->name('todo.update');
-
-    // Route::delete('/todo/{todo}', [TodoController::class, 'destroy'])->name('todo.destroy');
     Route::delete('/todo', [TodoController::class, 'destroyCompleted'])->name('todo.deleteallCompleted');
 
 
