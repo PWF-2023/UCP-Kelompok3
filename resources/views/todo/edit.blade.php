@@ -20,6 +20,17 @@
                             <x-input-error class="mt-2" :messages="$errors->get('title')" />
 
                         </div>
+
+                        <div class="mb-6">
+                            <x-input-label for="title" :value="__('Category')" />
+                            <x-select name="category_id" id="category_id" class="block w-full mt-1" :value="old('name', $todo->category_id)">
+                                <option value=""> Pilih Category </option>
+                                @foreach($categories as $category)
+                                <option value=" {{$category->id}} ">{{$category->title}}</option>
+                                @endforeach
+                            </x-select>
+                        </div>
+
                         <div>
                             <x-primary-button>{{ __('Save') }}</x-primary-button>
 

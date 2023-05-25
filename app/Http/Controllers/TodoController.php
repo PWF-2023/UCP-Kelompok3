@@ -106,7 +106,7 @@ class TodoController extends Controller
         // Eloquent way - Readable
         $todo->update([
             'title' => ucfirst($request->title),
-            'category_id' => ucfirst($request->category_id)
+            'category_id' => $request->category_id  
         ]);
 
         return redirect()->route('todo.index')->with('success', 'Todo updated successfully');
